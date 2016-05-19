@@ -1,1 +1,52 @@
-Hello World
+Spring IO Barcelona 2016
+
+a. DDD & REST
+
+Apply DDD to REST API
+ddd: 
+ - entities: eg ITEM. 
+ - value objects: dedicate types, to substitute "Stringly" type. eg: Firstname rather than String, Lastname rather than String, Email rather than String, etc.
+ - repositories: for aggregate roots, not for entities
+ - aggregates: some entities are more special because they control the lifecycle and constraint the others. eg: ORDER. Interaction is done only with aggregates.
+ those matter more in rest regards
+ 
+ you can refer to not aggregate root, providing you accept eventual consinstency
+ duplicate data and do not care about strong consinstency as much as reasonable in your domain
+ 
+ domain events:
+ 0. no events ~= CRUD rest: setters
+ 1. explicit operations: two setters in row == missing a concept
+ 2. operations as events: order created, shipping address changes, etc. publish and stored to share event logs to other part of the system
+ 3. event sourcing
+ 
+rest:
+ representation matters.
+ aggregate ~= resources: defined in terms of consistency scope, avoid multi-requests transaction
+ no domain logic into clients
+ repository ~= collections
+ relations ~= links
+ ids ~= uris
+ @versions ~= etags
+
+spring data rest: explicit data relationship (db knows only of relation, spring data rest helps differentiate between reference, attach to, etc)
+
+b. REACTIVE WORKSHOP
+backpressure
+http://akarnokd.blogspot.com.es/2016/03/opertor-fusion-part-1.html
+https://spring.io/blog/2016/04/19/understanding-reactive-types
+
+c. CACHING
+
+care about cache security, especially if source data is secured
+never implement own cache
+for R/W cache, prefer distributed cache
+avoid big heap for cache only
+separation of concern (cache not in between of business logic)
+Spring:
+- beware @Caching: very powerful, but from power comes responsible
+- customizable
+- multiple cache provider fully supported
+- can use jcache api
+
+d. CLOUD NATIVE WORKSHOP
+https://github.com/spencergibb/cloud-native-workshop
