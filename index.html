@@ -1,5 +1,10 @@
 Spring IO Barcelona 2016
 
+DAY 1
+
+KEYNOTE:
+https://github.com/ben-manes/caffeine
+
 a. DDD & REST
 
 Apply DDD to REST API
@@ -50,3 +55,51 @@ Spring:
 
 d. CLOUD NATIVE WORKSHOP
 https://github.com/spencergibb/cloud-native-workshop
+
+DAY 2
+
+a. KEYNOTE
+With latency becoming the norm, blocking runtimes make scaling hard
+unblocking runtimes need unblocking application
+stream api is a pull based model (blocking)
+reactive -> push based (backpressure)
+is order guarantee? how? waiting for personal breakthrough
+publisher subscriber model, where publisher push data to subscriber
+- datastore: persistent data source, replayable
+- message broker: pushes data to application. reactive streams have no effect, but reactive api can help. backpressure does not really effect, it can help to decide what to drop
+- external service: backpressure works both ways, client asks, service produces, but then if client is not listening anymore data is dropped (?)
+backpressure works ONLY e2e: need for a framework
+spring mvc vs spring reactive web: same logic, just adapt to backpressure e2e
+servlet 3.1 have an async mode that can be translated in reactive streams
+
+b. SPRING REST DOCS
+new in 1.1:
+- relaxed snippets: don't fail if undocument fields are present
+- reusable snippets
+good docs: github apis
+it has supports for constraints in 1.0, based on bean validation
+
+c. Spring Cloud Microservices, a journey inside a financial entity
+TODO
+- eureka configure to replicate behind a lb
+
+d. Spring Boot and Cloud for Legacy Applications
+strangler application/pattern: http://www.martinfowler.com/bliki/StranglerApplication.html, http://schmij.github.io/Strangler-Pattern/
+bddmockito
+
+e. CONFIG SERVER
+supports encryption: keys are versioned encrypted (?), served encrypted (?), show decrypted (?) in the config server.
+- each key can be encrypted with a different key.
+ - where to store this key?
+config server is the highest precedence property source
+make a bare clone locally
+https://medium.com/built-to-adapt/the-three-r-s-of-enterprise-security-rotate-repave-and-repair-f64f6d6ba29d
+
+f. TESTING SPRING BOOT
+https://github.com/philwebb/testing-spring-boot-applications
+
+g. LAST TALK
+https://github.com/spring-cloud/spring-cloud-stream-app-starters
+
+
+
